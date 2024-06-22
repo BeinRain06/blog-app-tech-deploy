@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "name": "blog-app-tech",
+  "builds": [
+    {
+      "src": "/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/post(.*)",
+      "dest": "/routes/post-route.js"
+    },
+    {
+      "src": "/register(.*)",
+      "dest": "/routes/register-route.js"
+    },
+    {
+      "src": "/login(.*)",
+      "dest": "/routes/login-route.js"
+    },
+    {
+      "src": "/logout(.*)",
+      "dest": "/routes/logout-route.js"
+    }
+  ]
+}
