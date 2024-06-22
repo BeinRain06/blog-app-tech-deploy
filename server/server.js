@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const cookie = require("cookie-parser");
+const Post = require("./src/models/post.js");
 
 const app = express();
 
@@ -37,6 +38,18 @@ app.get("/", (req, res) => {
   };
 
   res.status(200).json({ data: post });
+});
+
+/* Post routes */
+
+app.get("/post/all", async (req, res) => {
+  try {
+    let posts = await Post.find().populate("author", "username");
+
+    res.status(200).json({ success: true, data: posts });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //connect server to MONGODB and start it!
