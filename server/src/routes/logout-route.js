@@ -19,4 +19,15 @@ app.post("/logout", (req, res) => {
   res.status(200).json({ success: true, data: `${prevCookie.userName}` });
 });
 
+const NEW_PORT = 8080;
+
+const connectDB = require("../config/db");
+
+// listen on PORT 8080 (public port)
+connectDB().then(() => {
+  app.listen(NEW_PORT, () => {
+    console.log(`server running on ${NEW_PORT}`);
+  });
+});
+
 module.exports = app;

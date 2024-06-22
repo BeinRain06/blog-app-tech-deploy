@@ -119,4 +119,15 @@ app.post("/register", async (req, res) => {
   }
 });
 
+const NEW_PORT = 8080;
+
+const connectDB = require("../config/db");
+
+// listen on PORT 8080 (public port)
+connectDB().then(() => {
+  app.listen(NEW_PORT, () => {
+    console.log(`server running on ${NEW_PORT}`);
+  });
+});
+
 module.exports = app;
